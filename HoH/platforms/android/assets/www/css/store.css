@@ -1,0 +1,101 @@
+.wrapper {
+    padding-bottom:70px;
+}
+
+.profile-img {
+    width: 30%;
+    padding-bottom:30%;
+    float:left;
+}
+
+/* Main Store list */
+.store {
+    width: 90%;
+    margin: 1em auto;
+    clear: both;
+}
+
+.idstores {
+    clear:both;
+    overflow:hidden;
+}
+
+.selectStore {
+    clear:both;
+    overflow:hidden;
+    margin-bottom:1em;
+    padding-bottom:1em;
+    border-bottom-style: solid; 
+    border-bottom-width:2px;
+    border-bottom-color:#979a9a;
+}
+
+.store-img {
+    width: 35%;
+    float: left;
+}
+
+.store-text {
+    width: 65%;
+    float: left;
+}
+
+.store-text h3 {
+    
+}
+
+p {
+    margin-left:5%;
+    margin-bottom:0;
+    margin-top: 0;
+}
+
+.store-points {
+    margin-top:0;
+    font-size:1.25em;
+    color: #f1a200;
+}
+
+/* Redeem Coupon */
+.back {
+    position:absolute;
+    width:7%;
+    left:3%;
+    top:1.1rem;
+    max-width:35px;
+}
+
+.redeem-code {
+    width: 100%;
+    color: #000;
+    font-size: 1.5rem;
+}
+
+
+.redeem-img {
+    width: 50%;
+    margin: 0 auto;
+    clear: both;
+}
+
+.redeem-text {
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.redeem-button {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.coupon {
+    width: 50%;
+    text-align: center;
+    font-size: 1.75rem;
+    border: .125em solid #000;
+    padding: .5em;
+    margin: 0 25%;
+    color: #000;
+}
+

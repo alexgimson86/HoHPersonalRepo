@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/feed.css" />
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD-vBeqieztqoeRYaEXeIgjkTIMgq38ukQ"></script>
+    <script type="text/javascript" src="js/updateLatLongModule.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/markerclusterer.js"></script>
+    <script type="text/javascript" src="js/zoneModules.js"></script>
+    <script type="text/javascript" src="js/sendPush.js"></script>
+    <script type="text/javascript" src="js/favoritesModule.js"></script>
+    <script type="text/javascript" src="js/dataCollection.js"></script>
+    <title>Hall of Heroes</title>
+    <style>
+        .textArea {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <style>
+        .loaderMap {
+            position: fixed;
+            margin: auto;
+            left: 35%;
+            top: 38%;
+            z-index: 1;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #309da8;
+            width: 80px;
+            height: 80px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            background-image:url('img/lightning.png');
+            background-position:center center;
+            background-size:90%;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        .loaderTwo {
+            position: fixed;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 80px;
+            height: 80px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="signal">
+        <div class="signal-codes">
+            <button onClick="callHome()">
+                <img src="img/x.png" />
+            </button>
+            <h3>I need your help because...</h3>
+            <textarea class="textArea" id="signalMessage"></textarea>
+            <h3>My Signal is a...</h3>
+            <div class="loaderTwo" id="loaderTwo"></div>
+            <div class="signal-options" onClick="callGreen()">
+                <h2 class="green">Code Green</h2>
+                <h4 class="green">
+                    EX: I need a buddy to walk me home
+                </h4>
+            </div>
+            <div class="signal-options" onclick="callYellow()">
+                <h2 class="yellow">Code Yellow</h2>
+                <h4 class="yellow">
+                    EX: I need a safe ride home
+                </h4>
+            </div>
+            <div class="signal-options red-signal" onclick="callRed()">
+                <h2 class="red">Code Red</h2>
+                <h4 class="red">Ex: I am being followed</h4>
+            </div>
+        </div>
+        <div class="emergency">
+            <h2>Call 9-1-1</h2>
+        </div>
+    </div>
+
+    <!-- Global Header Starts Here -->
+    <div class="header">
+        <h1>Trouble Zones</h1>
+    </div>
+    <div class="loaderMap" id="loaderMap"></div>
+    <div class="wrapper">
+        <div id="geolocation">
+            <!--style="width: 500px; height:700px;"-->
+        </div>
+
+
+    </div>
+
+    <!-- Begin Global Navigation -->
+    <nav>
+        <ul>
+            <li><button onClick="callHome()"><img src="img/home_off.png" /><h6>Home</h6></button></li>
+            <li><button onClick="callFeed()"><img src="img/news_off.png" /><h6>News</h6></button></li>
+
+            <li><button onclick="toggle_visibility('signal');"><img src="img/signal.png" class="signal_button" /><h6 class="signal_text">Signal</h6></button></li>
+
+            <li><button onClick="callMap()"><img src="img/map_on.png" /><h6>Zones</h6></button></li>
+            <li><button onClick="callStore()"><img src="img/store_off.png" /><h6>Store</h6></button></li>
+
+
+        </ul>
+
+
+    </nav>
+    <!-- End Global Navigation -->
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">
+        var dt = new Date();
+            function showLoader() {
+                $('#loaderMap').show();
+            }
+            showLoader();
+            function init()
+            {
+                //setTimeout(zoneModules.getLocations, 5000);
+                var startdate = dataCollection.getFormattedDate(dt);
+                var str = "enters&zone";
+                dataCollection.getData(startdate, str);
+                sessionStorage.setItem('isHero', 0);
+                sessionStorage.setItem('isCaller', 0);
+                sessionStorage.setItem('hasLoaded', 0);
+                sessionStorage.setItem('isLoadedCaller', 0);
+                zoneModules.getLocations();
+            }
+            function hideLoader() {
+                document.getElementById("loaderMap").style.display = "none";
+            }
+            function hideLoaderTwo() {
+                document.getElementById("loaderTwo").style.display = "none";
+            }
+            $(document).ready(function () {
+                hideLoaderTwo();
+            });
+            function callFeed()
+             {
+                dataCollection.exitFromPage("zone");
+                setTimeout(function () { window.location = "feed.html" }, 1500);
+             }
+
+            function callHome()
+             {
+                dataCollection.exitFromPage("zone");
+                setTimeout(function () { window.location = "home.html" }, 1500);
+             }
+
+            function callStore()
+             {
+                dataCollection.exitFromPage("zone");
+                setTimeout(function () { window.location = "store.html" }, 1500);
+             }
+
+            function callSignal()
+             {
+                window.location = "signal.html";
+             }
+
+            function callRedeem()
+            {
+                window.location = "redeem.html";
+            }
+
+            function callGreen()
+            {
+                $('#loaderTwo').show();
+                sessionStorage.setItem('signalMessage', jQuery('#signalMessage').val());
+                //navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
+                var userName = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName');
+                // favoritesModule.saveLocation(latLong);
+                sessionStorage.setItem('color', 'green');
+                favoritesModule.makeCallToHeroes("green", userName);
+            }
+            function callYellow()
+            {
+                $('#loaderTwo').show();
+                sessionStorage.setItem('signalMessage', jQuery('#signalMessage').val());
+                //navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
+                var userName = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName');
+                // favoritesModule.saveLocation(latLong);
+                sessionStorage.setItem('color', 'yellow');
+                favoritesModule.makeCallToHeroes("yellow", userName);
+            }
+            function callRed() {
+                $('#loaderTwo').show();
+                sessionStorage.setItem('signalMessage', jQuery('#signalMessage').val());
+                //navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
+                var userName = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName');
+                // favoritesModule.saveLocation(latLong);
+                sessionStorage.setItem('color', 'red');
+                favoritesModule.makeCallToHeroes("red", userName);
+            }
+
+            function callContacts()
+            {
+                window.location = "contacts.html";
+            }
+
+            function callMap()
+            {
+                window.location = "map.html";
+            }
+
+            sessionStorage.setItem('isMap',1);
+            app.initialize();
+
+            function toggle_visibility(id) {
+               var e = document.getElementById(id);
+               if(e.style.display == 'block')
+                  e.style.display = 'none';
+               else
+                  e.style.display = 'block';
+            }
+            init();
+
+    </script>
+
+</body>
+
+</html>

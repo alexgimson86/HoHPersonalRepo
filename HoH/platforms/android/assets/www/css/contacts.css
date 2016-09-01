@@ -1,0 +1,89 @@
+.wrapper {
+    padding-bottom:0;
+}
+
+
+.contactUnit {
+    padding-top:35px;
+    overflow:hidden;
+}
+
+.feed {
+    width:90%;
+    margin:2rem auto;
+    border-bottom-style: solid; 
+    border-bottom-width:2px;
+    border-bottom-color:#979a9a;
+    padding-bottom:1rem;
+    overflow:hidden;
+}
+
+.feed-img {
+    width: 20%;
+    height: 0;
+    padding-bottom: 20%;
+    margin: 0 5% 0 0;
+    overflow: hidden;
+    border-radius: 50%;
+    border: .25rem solid #f1a200;
+    background-color: #f1a200;
+    position: relative;
+    float:left;
+    
+    /*background-position:center center;
+    background-size: cover;*/
+}
+
+.feed-img img {
+    height:auto;
+    width:100%;
+    display:block;
+    margin:0 auto;
+}
+
+.feed-text {
+    /*width: 65%;*/
+    float: left;
+    margin: 1rem 0;
+    font-size: 1.15rem;
+    color: #656868;
+    float:left;
+}
+
+.ckBox {
+    float:left;
+    margin-right:5%;
+    width:5%;
+}
+
+.name_highlight {
+    color: #f1a200;
+    font-weight: 700;
+}
+
+.cancel {
+    position:absolute;
+    width:7%;
+    left:3%;
+    top:1.0rem;
+    max-width:35px;
+}
+
+.done {
+    position:absolute;
+    right:3%;
+    top:1rem;
+}
+
+.done input {
+    border:none;
+    background-color:transparent;
+    color: #fff;
+    font-family: 'Raleway Medium', verdana, helvetica, arial, sans-serif;
+    width:auto;
+    margin:0;
+    font-size:1.5rem;
+    outline: none;
+} 
+
+

@@ -1,0 +1,278 @@
+/* Container CSS moved from home.html */
+
+
+/*#container {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100vh;
+    padding-bottom:150px; 
+}*/
+
+/*.onboard {
+    position: absolute;
+    width: 100%;
+    overflow:hidden;
+}*/
+
+.home_wrapper {
+    position:relative;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 48pt;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    padding-bottom:70pt;
+}
+
+
+#div1 {
+    background-color:red;
+    overflow:hidden;
+}
+
+#div2 {
+    display: none;
+    
+}
+
+
+#profile-wrapper {
+    background-color: white;
+    padding-bottom: 80px;
+}
+
+#redeem-wrapper {
+    padding-bottom: 100px;   
+}
+
+
+.heroes {
+    width: 90%;
+    margin: 0 0 0 5%;
+    overflow-x: hidden;
+}
+
+.profile-text {
+    margin:0 auto;
+}
+
+.plus-sign {
+    position: absolute;
+    top: .25rem;
+    left: 72%;
+    z-index: 80;
+}
+
+.HH-people {
+    width: 87%;
+    height: 0;
+    padding-bottom: 87%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: .5rem solid #e9ae42;
+    background-color: #e9ae42;
+    position: relative;
+    
+    /*background-position:center center;
+    background-size: cover;*/
+}
+
+.HH-people img {
+        width:100%;
+        height:auto;
+        margin:0 auto;
+        display:block;
+    }
+
+
+.HH-hero {
+    width: 30%;
+    float: left;
+    margin: .75rem 5% .75rem 0%;
+    position: relative;
+}
+
+.HH-hero:nth-of-type(3n) {
+    margin: .75rem 0% .75rem 0%;
+}
+
+
+
+.edit {
+    position:absolute;
+    right:5%;
+    top:2rem; /* fix for ios header */
+    max-width:25px;
+    letter-spacing: .08rem;
+}
+
+.edit img {
+    width:65%;
+    display:block;
+    margin:0 auto;
+}
+
+
+.edit h3 {
+    color: #fff;
+    font-size: .85rem;
+    margin-top: .5rem;
+}
+
+
+.hero-header {
+    height: 270px;
+    background-color: #838382;
+}
+
+.hero-header img {
+    margin: 0;   
+}
+
+.hero-signal {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.hero-signal h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+.hero-signal h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 1.25rem;
+    text-transform: uppercase;
+}
+
+.hero-HH {
+    float: none;
+    margin: 0 auto;
+}
+
+.hero-people {
+    border: none;
+    margin-bottom: .5rem;
+}
+
+.hero-map {
+    padding-top: 180px;   
+}
+
+.hero-signal-nav {
+    background-color: #838382;
+    height: 105px;
+    text-align: center;
+}
+
+.hero-signal-nav img {
+    width: 65%;   
+}
+
+.hero-signal-nav li {
+    margin: .65rem 2% 0;   
+}
+
+.green-header {
+    height: 190px;
+    background-color: #838382;
+}
+
+.green-header img {
+    margin: 0;   
+}
+
+.green-img {
+    width: 80%;
+    margin: 1.75rem 4% .5rem;
+}
+
+.green-signal {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.green-signal h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    margin: 0 0 .5rem 0;
+    color: #3c6819;
+}
+
+.green-signal h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 1.25rem;
+    text-transform: uppercase;
+}
+
+.green-map {
+    padding-top: 100px;   
+}
+
+
+.green-signal-nav h3 {
+    color: #fff;
+    margin: 2em 0;
+}
+
+article {
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+    margin: .75em 0;
+    color: #000;
+}
+
+article h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    padding: 0;
+    font-weight: normal;
+    color: #000;
+}
+
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="100019" defaultlocale="en-US" id="io.cordova.myappc89b81" ios-CFBundleVersion="100019" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+    <name>Hall Of Heroes</name>
+    <description>Hall of Heroes connects you with your residence hall buddies to keep you safe on and off campus.</description>
+    <author email="gl16@txstate.edu" href="http://www.hallofheroesapp.com">Beinestar Coalition</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <vs:features />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="windows-target-version" value="8.1" />
+    <preference name="orientation" value="portrait" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="target-device" value="handset" />
+</widget>

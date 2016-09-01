@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/onboarding.css" />
+        <link rel="stylesheet" type="text/css" href="css/contacts.css" />
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+        <script src="js/accountSetupModule.js" ></script>
+        <script src="js/cameraModule.js"></script>
+        <script src ="js/contactsModule.js"></script>
+        <script src ="js/updateFavoritesModule.js"></script>
+        
+        <script type = "text/javascript" src="js/emailValidationModule.js" ></script>
+        <script type ="text/javascript">
+            
+            //toggle_visibility("hiddenDiv");
+            function load(){
+                //this function checks for any hero image changes
+                if (sessionStorage.getItem("userAvatar") !== null)
+                    document.getElementById("imageTask").src = sessionStorage.getItem("userAvatar");
+                //if (sessionStorage.getItem("divStyle") !== null)
+                    //toggle_visibility('hiddenDiv');
+            }
+            
+        </script>
+        
+        <style>
+            body {
+                padding: 0px;    
+            }
+
+            #container {
+                position: absolute;
+                margin: 0px;
+                padding: 0px;
+                width: 100%;
+                height: 100%;
+  
+            }
+
+            .onboard {
+                position: absolute;
+                width: 100%;
+            }
+
+            #div1 {
+                
+            }
+
+            #div2 {
+                display: none
+            }
+        </style>
+        <title>Hall of Heroes</title>
+    </head>
+    <body onload = "load()">
+        <div id="container">   
+            <div id="div1" class="onboard">
+                <!-- Global Header Starts Here -->
+                <div class="header">
+                    <h1>Account Setup</h1>
+                </div>
+
+                <div class="wrapper">
+                    <p class="sign_in">Already have an account? <a onclick="callSignIn()">Sign in</a></p>
+                    <!-- profile -->
+                    <label>1. Add your selfie</label><br /><br />
+                    <div class="profile-main">
+                        <div class="plus-sign"><img src="img/camera.png" alt="add your avatar" id = "plusSign"/></div>
+                        <div class="profile-img">
+                            <img data-status="" src="img/blank_avatar.png" id ="imageTask" />
+                        </div>
+                    </div>
+                    <p>&nbsp;</p>
+
+                    <form>
+                        <label>2. Enter your TxState Email</label><br/>
+                        <input type="email" id="emailId" value=""/><!-- check for proper email formatting and for matching username in DB -->
+                        <button id="button" class="disclaimer-button">Check Email</button><br><br>
+
+                    <div id="hiddenDiv" style="display: none">
+                        <label>3. Enter a password</label><br/>
+                        <input type="password" id="user_pw" />
+
+                        <label>4. What is your biological sex?</label><br/>
+                        <select id="gender">
+                            <option value="option">Please Choose</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="transgender">Transgender</option>
+                        </select>
+                    </form>
+
+                    <h3>5. Choose your favorite heroes</h3>
+                    <h2>(Don&rsquo;t worry, you can change them later)</h2>
+                    <div class="heroes">
+                        <div class="HH-hero" data-userId="">
+                            <div class="plus-sign"><img src="img/plus.png" alt="edit favorite hero" id = "heroOnePlus" /></div>
+                            <div class="HH-people">
+                                <img src="img/blank_avatar.png" id = "heroOne" width="100%" height="100%"/>
+                            </div>
+                            <p align = "center" id = "heroOneName"></p>
+                        </div>
+                        <div class="HH-hero" data-userId="">
+                            <div class="plus-sign"><img src="img/plus.png" alt="edit favorite hero"  id = "heroTwoPlus" /></div>
+                            <div class="HH-people">
+                                <img src="img/blank_avatar.png" id = "heroTwo"/>                       
+                            </div>
+                            <p align = "center" id = "heroTwoName"></p>
+                        </div>
+                        <div class="HH-hero" data-userId="">
+                            <div class="plus-sign"><img src="img/plus.png" alt="edit favorite hero" id = "heroThreePlus" /></div>
+                        <div class="HH-people">
+                            <img src="img/blank_avatar.png" id = "heroThree"/>                  
+                            </div>
+                            <p align = "center" id = "heroThreeName"></p>                    
+                        </div>
+                        <div class="HH-hero" data-userId="">
+                            <div class="plus-sign"><img src="img/plus.png" alt="edit favorite hero" id = "heroFourPlus" /></div>
+                        <div class="HH-people">
+                            <img src="img/blank_avatar.png" id = "heroFour"/>                  
+                            </div>
+                            <p align = "center" id = "heroFourName"></p>                    
+                        </div>
+                        <div class="HH-hero" data-userId="">
+                            <div class="plus-sign"><img src="img/plus.png" alt="edit favorite hero" id = "heroFivePlus" /></div>
+                        <div class="HH-people">
+                            <img src="img/blank_avatar.png" id = "heroFive"/>                  
+                            </div>
+                            <p align = "center" id = "heroFiveName"></p>                    
+                        </div>
+                        <div class="HH-hero" data-userId="">
+                            <div class="plus-sign"><img src="img/plus.png" alt="edit favorite hero" id = "heroSixPlus" /></div>
+                        <div class="HH-people">
+                            <img src="img/blank_avatar.png" id = "heroSix"/>                  
+                            </div>
+                            <p align = "center" id = "heroSixName"></p>                    
+                        </div>
+                    </div>
+
+                    <button id="done" class="disclaimer-button">Done</button><!-- Check to make sure user has added three friends and their own avatar -->
+                    </div>
+
+                </div>
+            </div>
+            <div id="div2" class="onboard">
+                <div class="header">
+                    <div class="cancel">
+                        <img id ="back" src="img/cancel.png" /><!-- if screen is triggered from onboarding, then go back to onboarding screen instead of home -->
+                    </div>
+                    <div class="done">
+                        <input type="button" id="onboardingDone" value="Done" />
+                    </div>
+                    <h1>My Contacts</h1>
+                </div>
+
+                <!-- Begin contact unit populated by contactsModule.js-->
+                <div class="contactUnit">
+
+                </div>
+                <!-- End contact unit -->
+            </div>
+        </div> 
+            
+        
+    
+    <script type="text/javascript" src="cordova.js"></script>
+        <!--<script type="text/javascript" src="js/index.js"></script>-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                $(".heroes").find(".plus-sign").click(function () {
+                    $('#div1').toggle("slide", "right", 200);
+                    $('#div2').toggle("slide", "right", 200);
+                });
+                
+                $("#back").click(function() {
+                    $('#div1').toggle("slide", "left", 200);
+                    $('#div2').toggle("slide", "left", 200);
+                });
+                
+                $("#plusSign").click(function(){
+                    //alert('clicked!');
+                    cameraModule.getPicture();
+                    $('#imageTask').data('status', "changed");
+                    document.getElementById("imageTask").src = sessionStorage.getItem("userAvatar");
+                });
+                
+                $("#done").click(function(e) {
+                    e.preventDefault();
+                    var password = document.getElementById('user_pw').value;
+                    var gender = $("#gender option:selected").text();
+                    var numChecked = $('div input:checkbox:checked').size();
+                    var status = $('#imageTask').data('status');
+                    console.log(status);
+                    if(status !== "changed") {
+                        alert("Please upload a picture of yourself.");
+                        return false;
+                    }
+                    if(password === "") {
+                        alert("Please enter a password.");
+                        return false;
+                    }
+                    if(gender === "Please Choose") {
+                        alert("Please choose your biological sex.");
+                        return false;
+                    }
+                    if(numChecked < 6) {
+                        alert("Please select 6 heroes.");
+                        return false;
+                    }
+                    cameraModule.startUpload();
+                    accountSetupModule.submitAccount(password, gender);  
+                    
+                });
+            });
+            
+            $(document).ready(function validInput(){
+                $("#button").click(function(e){
+                    e.preventDefault();
+                    //alert('button was clicked!');
+                    var param = document.getElementById("emailId").value;
+                    emailValidationModule.verifyFormat(param);                       
+                });
+            });
+            
+            function callSignIn() {
+                window.location = "sign_in.html";   
+            }
+            
+            app.initialize();
+            
+            function toggle_visibility(id) {
+               //alert('toggle viz called!');
+               var e = document.getElementById(id);
+               if(e.style.display === 'block')
+                  e.style.display = 'none';
+               else
+                  e.style.display = 'block';
+            }
+
+        </script>
+</body>
+        
+</html>
