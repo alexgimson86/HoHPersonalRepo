@@ -78,8 +78,6 @@ var app = {
         //sessionStorage.setItem("initializationCheck", 1);
         //}
         window.plugins.PushbotsPlugin.on("notification:received", function (data) {
-            alert("is caller = " + sessionStorage.getItem('isCaller'));
-            alert("is hero = " + sessionStorage.getItem('isHero'));
             if (data.message.indexOf('has cancelled the call. Sorry about it!') > -1 && sessionStorage.getItem('isCaller') == 1) {
                 alert(data.message);
                 sessionStorage.setItem('isCaller', 0);
@@ -89,7 +87,7 @@ var app = {
                 var color = sessionStorage.getItem('color');
                 favoritesModule.makeCallToHeroes(color,name);
             }
-            else if (data.message.indexOf('has cancelled the call. Sorry about it!') > -1 && sessionStorage.getItem('isHero') == 1) {
+            else if (data.message.indexOf('has cancelled the call. Sorry about it!') > -1) {
                 alert(data.message);
                 window.location = "home.html";
             }

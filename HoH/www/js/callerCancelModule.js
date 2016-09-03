@@ -1,13 +1,11 @@
 ﻿var callerCancelModule = (function () {
     var sendSmsToCancel = function () {
-        alert("inside caller cancel module" + 'isHero = ' + sessionStorage.getItem('isHero'));
         var isHero = sessionStorage.getItem('isHero');
         var token;
         if (isHero == 1)
             token = sessionStorage.getItem('callersPushToken');
         else
             token = sessionStorage.getItem('pushToken');
-        alert(token);
 
         var callerFname = sessionStorage.getItem('firstName');
         var callerLname = sessionStorage.getItem('lastName');

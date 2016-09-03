@@ -99,7 +99,7 @@ function dropMarker(latitude,longitude)
 
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
-    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     directionsDisplay.setMap(app.map);
 
     calcRoute(directionsDisplay, directionsService, latLong2);
@@ -173,7 +173,7 @@ function checkHeroDistance() {
         
 }
 function initialize(directionsDisplay) {
-    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     directionsDisplay.setMap(app.map);
 }
 function calcRoute(directionsDisplay, directionsService, latLong2) {
@@ -181,9 +181,27 @@ function calcRoute(directionsDisplay, directionsService, latLong2) {
     var heroLat = sessionStorage.getItem('initalHeroLat');
     var heroLong = sessionStorage.getItem('initialHeroLong');
     var heroMarker = new google.maps.LatLng(heroLat, heroLong);
+    var heroMarkerNew;
+    var callerMarker;
     var request;
+    //testing new markers
+    var heroIcon = 'http://www.hallofheroesapp.com/img/hospitals.png';
+    var callerIcon = 'http://www.hallofheroesapp.com/img/phoneImage.png';
+   
 
     if (sessionStorage.getItem('isCaller') == 1) {
+        heroMarkerNew = new google.maps.Marker({
+            position: heroMarker,
+            map: app.map,
+            title: 'hero location',
+            icon: heroIcon
+        });
+        callerMarker = new google.maps.Marker({
+            position: app.marker.position,
+            map: app.map,
+            title: 'caller location',
+            icon: callerIcon
+        });
         request = {
             origin: app.marker.position,
             destination: heroMarker,
@@ -191,13 +209,25 @@ function calcRoute(directionsDisplay, directionsService, latLong2) {
         };
     }
     else {
+        heroMarkerNew = new google.maps.Marker({
+            position: heroMarker,
+            map: app.map,
+            title: 'hero location',
+            icon: heroIcon
+        });
+        callerMarker = new google.maps.Marker({
+            position: latLong2,
+            map: app.map,
+            title: 'caller location',
+            icon: callerIcon
+        });
         request = {
             origin: heroMarker,
             destination: latLong2,
             travelMode: 'WALKING' // google.maps.TravelMode.WALKING
         };
     }
-
+    
     directionsService.route(request, function (result, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(result);
